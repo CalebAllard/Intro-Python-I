@@ -30,3 +30,35 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+# argument for input
+
+cmdargs = sys.argv
+if len(cmdargs) == 1:
+  today = datetime.today()
+  month = calendar.monthcalendar(today.year,today.month)
+  print(month)
+if len(cmdargs) >= 4:
+  print(f'Please use "14_cal.py [month] [year]" format')
+  exit()
+if len(cmdargs) == 3:
+  month = cmdargs[1]
+  year = cmdargs[2]
+  display = calendar.monthcalendar(year,month)
+  print(display)
+
+if len(cmdargs) == 2:
+  month = cmdargs[1]
+  print(month)
+  if int(month[0]) >= 1 and int(month[0]) <= 12:
+
+    years = datetime.today()
+    display = calendar.monthcalendar(years.year,int(month))
+    print(display)
+  else:
+    print(f"{month} is out of month range 1-12")
+    exit()
+#  get current month calender
+
+# if user puts in only month get callender for month and current year
+
+# else put out usage statment showing use of program then exit
